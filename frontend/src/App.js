@@ -5,7 +5,7 @@ import StockDashboard from './components/StockDashboard';
 // import styles from './styles/darktheme.module.css'; // <-- REMOVED THIS LINE
 
 // Import the CSS file to apply global styles
-import './styles/darktheme.module.css'; // <-- THIS LINE IS CORRECT
+import style from './styles/darktheme.module.css'; // <-- THIS LINE IS CORRECT
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -23,13 +23,14 @@ function App() {
   };
 
   return (
-    <div className="appContainer">
-      <div className="container">
+    <div className={styles.appContainer}> {/* <-- CHANGED */}
+      <div className={styles.container}> {/* <-- CHANGED */}
         {!token ? (
           <Auth setToken={handleLogin} />
         ) : (
           <>
-            <header className="header" style={{ marginBottom: '2rem' }}>
+            {/* You can use styles.header or keep inline styles. Let's use the module. */}
+            <header className={styles.header} style={{ marginBottom: '2rem' }}> {/* <-- CHANGED */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
                   <h1 style={{ margin: 0, color: '#fff' }}>Stock Tracker</h1>
@@ -55,7 +56,7 @@ function App() {
               </div>
             </header>
             
-            <div className="card">
+            <div className={styles.card}> {/* <-- CHANGED */}
               <Watchlist 
                 token={token} 
                 onSelect={setSelected}
@@ -63,7 +64,7 @@ function App() {
             </div>
             
             {selected && (
-              <div className="card">
+              <div className={styles.card}> {/* <-- CHANGED */}
                 <StockDashboard 
                   token={token} 
                   symbol={selected} 
