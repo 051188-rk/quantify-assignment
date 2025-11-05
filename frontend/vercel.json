@@ -5,10 +5,13 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build"
+        "distDir": "build",
+        "zeroConfig": true
       }
     }
   ],
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "build",
   "routes": [
     {
       "src": "/(.*)",
