@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "vercel-build": "npm install && npm run build"
+    "vercel-build": "node vercel-build.js"
   },
   "eslintConfig": {
     "extends": [
