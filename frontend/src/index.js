@@ -4,6 +4,30 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/base';
 import { theme } from './styles/theme';
 import App from './App';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  TimeScale
+} from 'chart.js';
+import 'chartjs-adapter-date-fns';
+
+// Register Chart.js components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  TimeScale
+);
 
 // Add error boundary for the entire app
 class ErrorBoundary extends React.Component {
@@ -31,33 +55,6 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-// --- Import and Register Chart.js elements ---
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  TimeScale
-} from 'chart.js';
-import 'chartjs-adapter-date-fns';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  TimeScale
-);
-// --- End Chart.js registration ---
-
-const container = document.getElementById('root');
 // Check if root element exists
 const rootElement = document.getElementById('root');
 
