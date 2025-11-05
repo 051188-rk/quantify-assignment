@@ -2,26 +2,79 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Quantify - Stock Market Dashboard" />
-    <link rel="apple-touch-icon" href="/logo192.png" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" crossorigin="use-credentials" />
     <title>Quantify</title>
+    <script>
+      // Set base URL for API requests
+      window.API_URL = process.env.NODE_ENV === 'production' 
+        ? 'https://quantify-assignment.onrender.com/api' 
+        : 'http://localhost:5000/api';
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="text-align: center; padding: 2rem; font-family: Arial, sans-serif;">
+        <h1>JavaScript is disabled</h1>
+        <p>This application requires JavaScript to function. Please enable JavaScript in your browser settings.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
-    <!-- This script ensures the React app is properly mounted -->
     <script>
-      // Simple check to see if React app is mounted
-      window.addEventListener('load', function() {
-        if (!document.getElementById('root').hasChildNodes()) {
-          console.error('React app failed to mount!');
-          document.body.innerHTML = '<div style="text-align: center; padding: 2rem; font-family: Arial, sans-serif;"><h1>Error Loading Application</h1><p>Please refresh the page or try again later.</p></div>';
+      // Error handling for failed asset loading
+      window.addEventListener('error', function(e) {
+        console.error('Error loading resource:', e);
+        // Don't show error for favicon.ico to avoid cluttering the console
+        if (e.target && e.target.tagName === 'LINK' && e.target.href && e.target.href.includes('favicon.ico')) {
+          return;
         }
-      });
+        
+        // Show error message in the UI
+        const errorDiv = document.createElement('div');
+        errorDiv.style.cssText = 'position: fixed; bottom: 0; left: 0; right: 0; background: #ffebee; color: #c62828; padding: 10px; text-align: center; z-index: 9999;';
+        errorDiv.textContent = 'Error loading application resources. Some features may not work correctly.';
+        document.body.appendChild(errorDiv);
+      }, true);
+
+      // Check if React app mounted successfully
+      let appMounted = false;
+      
+      // Check for React root element every 100ms for up to 5 seconds
+      const checkAppMounted = setInterval(function() {
+        const root = document.getElementById('root');
+        if (root && root.hasChildNodes()) {
+          appMounted = true;
+          clearInterval(checkAppMounted);
+        }
+      }, 100);
+
+      // If app doesn't mount in 5 seconds, show error
+      setTimeout(function() {
+        if (!appMounted) {
+          const root = document.getElementById('root');
+          if (root && !root.hasChildNodes()) {
+            console.error('React app failed to mount!');
+            document.body.innerHTML = `
+              <div style="text-align: center; padding: 2rem; font-family: Arial, sans-serif;">
+                <h1>Application Error</h1>
+                <p>Failed to load the application. This might be due to one of the following reasons:</p>
+                <ul style="text-align: left; max-width: 600px; margin: 1rem auto;">
+                  <li>Your internet connection is unstable</li>
+                  <li>JavaScript is disabled in your browser</li>
+                  <li>There was an error loading the application files</li>
+                </ul>
+                <p>Please try <a href="." style="color: #1976d2; text-decoration: none;">refreshing the page</a>.</p>
+                <p>If the problem persists, please contact support.</p>
+              </div>
+            `;
+          }
+        }
+      }, 5000);
     </script>
   </body>
 </html>
