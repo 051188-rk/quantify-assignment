@@ -2,16 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Quantify - Stock Market Dashboard" />
-    <link rel="apple-touch-icon" href="logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="manifest" href="/manifest.json" />
     <title>Quantify</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <!-- This script ensures the React app is properly mounted -->
+    <script>
+      // Simple check to see if React app is mounted
+      window.addEventListener('load', function() {
+        if (!document.getElementById('root').hasChildNodes()) {
+          console.error('React app failed to mount!');
+          document.body.innerHTML = '<div style="text-align: center; padding: 2rem; font-family: Arial, sans-serif;"><h1>Error Loading Application</h1><p>Please refresh the page or try again later.</p></div>';
+        }
+      });
+    </script>
   </body>
 </html>
