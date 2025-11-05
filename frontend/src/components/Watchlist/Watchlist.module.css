@@ -1,0 +1,110 @@
+.watchlistContainer {
+  margin-bottom: 2rem;
+}
+
+.watchlistHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.watchlistTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.addStockForm {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.symbolInput {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #2d2d2d;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.symbolInput:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.addButton {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.addButton:hover {
+  background: #357abd;
+}
+
+.addButton:disabled {
+  background: #555;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.stockList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.stockItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: #2d2d2d;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.stockItem:hover {
+  background: #3a3a3a;
+}
+
+.stockSymbol {
+  font-weight: 600;
+  color: #fff;
+}
+
+.removeButton {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.removeButton:hover {
+  background: #c0392b;
+}
+
+.emptyMessage {
+  color: #aaa;
+  text-align: center;
+  padding: 1.5rem;
+  background: #2d2d2d;
+  border-radius: 4px;
+}
