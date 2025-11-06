@@ -42,30 +42,10 @@
       ]
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "https://quantify-assignment.onrender.com/api/$1"
-    },
-    {
-      "src": "^/static/(.*)",
-      "dest": "/frontend/build/static/$1"
-    },
-    {
-      "src": "^/favicon.ico",
-      "dest": "/frontend/build/favicon.ico"
-    },
-    {
-      "src": "^/manifest.json",
-      "dest": "/frontend/build/manifest.json"
-    },
-    {
-      "src": "^/logo(.*)\\.(png|svg|jpg|jpeg|gif|ico)",
-      "dest": "/frontend/build/logo$1.$2"
-    },
-    {
-      "src": "^/(.*)",
-      "dest": "/frontend/build/index.html"
+      "source": "/api/(.*)",
+      "destination": "https://quantify-assignment.onrender.com/api/$1"
     }
   ]
 }
