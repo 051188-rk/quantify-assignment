@@ -49,23 +49,23 @@
     },
     {
       "src": "^/static/(.*)",
-      "dest": "/frontend/build/static/$1"
+      "dest": "/static/$1"
     },
     {
       "src": "^/favicon.ico",
-      "dest": "/frontend/build/favicon.ico"
+      "dest": "/favicon.ico"
     },
     {
       "src": "^/manifest.json",
-      "dest": "/frontend/build/manifest.json"
+      "dest": "/manifest.json"
     },
     {
       "src": "^/logo(.*)\\.(png|svg|jpg|jpeg|gif|ico)",
-      "dest": "/frontend/build/logo$1.$2"
+      "dest": "/logo$1.$2"
     },
     {
       "src": "^/(.*)",
-      "dest": "/frontend/build/index.html"
+      "dest": "/index.html"
     }
   ]
 }
