@@ -46,6 +46,10 @@
     {
       "source": "/api/(.*)",
       "destination": "https://quantify-assignment.onrender.com/api/$1"
+    },
+    {
+      "source": "/((?!api/|static/|favicon.ico|manifest.json|logo.*\\.(png|svg|jpg|jpeg|gif|ico)).*)",
+      "destination": "/index.html"
     }
   ]
 }
