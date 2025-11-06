@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build"
@@ -44,24 +44,28 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "https://quantify-assignment.onrender.com/api/$1"
+    },
+    {
       "src": "^/static/(.*)",
-      "dest": "/static/$1"
+      "dest": "/frontend/build/static/$1"
     },
     {
       "src": "^/favicon.ico",
-      "dest": "/favicon.ico"
+      "dest": "/frontend/build/favicon.ico"
     },
     {
       "src": "^/manifest.json",
-      "dest": "/manifest.json"
+      "dest": "/frontend/build/manifest.json"
     },
     {
       "src": "^/logo(.*)\\.(png|svg|jpg|jpeg|gif|ico)",
-      "dest": "/logo$1.$2"
+      "dest": "/frontend/build/logo$1.$2"
     },
     {
       "src": "^/(.*)",
-      "dest": "/index.html"
+      "dest": "/frontend/build/index.html"
     }
   ]
 }
